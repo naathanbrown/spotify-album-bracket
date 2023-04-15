@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/spotify-album-bracket/static/css/main.073c9b0a.css",
-    "main.js": "/spotify-album-bracket/static/js/main.aae34f2b.js",
+    "main.js": "/spotify-album-bracket/static/js/main.de56e0e2.js",
     "static/js/787.e8ca8bb9.chunk.js": "/spotify-album-bracket/static/js/787.e8ca8bb9.chunk.js",
     "index.html": "/spotify-album-bracket/index.html",
     "main.073c9b0a.css.map": "/spotify-album-bracket/static/css/main.073c9b0a.css.map",
-    "main.aae34f2b.js.map": "/spotify-album-bracket/static/js/main.aae34f2b.js.map",
+    "main.de56e0e2.js.map": "/spotify-album-bracket/static/js/main.de56e0e2.js.map",
     "787.e8ca8bb9.chunk.js.map": "/spotify-album-bracket/static/js/787.e8ca8bb9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.aae34f2b.js"
+    "static/js/main.de56e0e2.js"
   ]
 }
