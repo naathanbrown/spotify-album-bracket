@@ -7,7 +7,10 @@ const bracketManager = new Bracket();
 
 export const View = () => {
   const CLIENT_ID = "f30b1e0347194467b79f859c279ba8e7";
-  const REDIRECT_URI = "http://localhost:3000/";
+  const REDIRECT_URI =
+    process.env.NODE_ENV === "production"
+      ? "https://naathanbrown.github.io/spotify-album-bracket/"
+      : "http://localhost:3000/";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const SCOPE = "user-top-read";
