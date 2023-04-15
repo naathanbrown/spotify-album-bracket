@@ -39,6 +39,11 @@ export const View = () => {
     setToken(token as unknown as string);
   }, []);
 
+  function logout() {
+    setToken("");
+    window.localStorage.removeItem("token");
+  }
+
   async function searchArtist() {
     try {
       return await spotify.getAllAlbumsOfArtists(token);
@@ -80,11 +85,14 @@ export const View = () => {
         </a>
       )}
       {token !== "" && (
-        <input
-          type="button"
-          onClick={generateBracket}
-          value="Generate Bracket"
-        />
+        <>
+          <input
+            type="button"
+            onClick={generateBracket}
+            value="Generate Bracket"
+          />
+          <input type="button" onClick={logout} value="Logout" />
+        </>
       )}
       {match && (
         <div style={divStyle}>
