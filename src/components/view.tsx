@@ -19,6 +19,7 @@ export const View = () => {
   const [match, setMatch] = useState<Matchup | null>();
   const [winner, setWinner] = useState<Album | null>();
   const [debug, setDebug] = useState<String | null>();
+  const [round, setRound] = useState<number | null>();
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -58,6 +59,7 @@ export const View = () => {
     const albums = await searchArtist();
     bracketManager.createBracket(albums);
     setMatch(bracketManager.getNextMatch());
+    setRound(1);
   }
 
   function decideMatch(selection: string) {
@@ -68,6 +70,7 @@ export const View = () => {
       setWinner(possibleWin);
     } else {
       setMatch(bracketManager.getNextMatch());
+      setRound(round! + 1);
     }
   }
 
@@ -95,35 +98,38 @@ export const View = () => {
         </>
       )}
       {match && (
-        <div style={divStyle}>
-          <div>
-            <p>
-              {match?.home?.name} - {match?.home?.artist}
-            </p>
-            <img
-              src={match?.home?.cover}
-              alt="new"
-              onClick={() => decideMatch("home")}
-              height="250"
-              width="250"
-            />
+        <>
+          <h1>Round: {round}</h1>
+          <div style={divStyle}>
+            <div>
+              <p>
+                {match?.home?.name} - {match?.home?.artist}
+              </p>
+              <img
+                src={match?.home?.cover}
+                alt="new"
+                onClick={() => decideMatch("home")}
+                height="250"
+                width="250"
+              />
+            </div>
+            <div>
+              <p> vs </p>
+            </div>
+            <div>
+              <p>
+                {match?.away?.name} - {match?.away?.artist}
+              </p>
+              <img
+                src={match?.away?.cover}
+                alt="new"
+                onClick={() => decideMatch("away")}
+                height="250"
+                width="250"
+              />
+            </div>
           </div>
-          <div>
-            <p> vs </p>
-          </div>
-          <div>
-            <p>
-              {match?.away?.name} - {match?.away?.artist}
-            </p>
-            <img
-              src={match?.away?.cover}
-              alt="new"
-              onClick={() => decideMatch("away")}
-              height="250"
-              width="250"
-            />
-          </div>
-        </div>
+        </>
       )}
       {winner && (
         <div>
