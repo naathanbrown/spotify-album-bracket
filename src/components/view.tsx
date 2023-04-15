@@ -18,6 +18,7 @@ export const View = () => {
   const [token, setToken] = useState("");
   const [match, setMatch] = useState<Matchup | null>();
   const [winner, setWinner] = useState<Album | null>();
+  const [debug, setDebug] = useState<String | null>();
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -43,6 +44,7 @@ export const View = () => {
       return await spotify.getAllAlbumsOfArtists(token);
     } catch (err) {
       window.localStorage.setItem("token", "");
+      setDebug(`DEBUG: ${JSON.stringify(err)}`);
       setToken("");
     }
   }
@@ -123,6 +125,7 @@ export const View = () => {
           <img src={winner.cover} alt="new" height="250" width="250" />
         </div>
       )}
+      {debug && <p> {debug}</p>}
     </>
   );
 };
